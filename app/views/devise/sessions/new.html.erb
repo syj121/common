@@ -1,0 +1,37 @@
+<div class="am-g myapp-login">
+  <div class="myapp-login-logo-block  tpl-login-max">
+    <div class="myapp-login-logo-text">
+      <div class="myapp-login-logo-text">
+        云书阁<span> 登录</span> <i class="am-icon-skyatlas"></i>
+      </div>
+    </div>
+
+    <div class="login-font">
+      <i>登录</i> or <span> <%= link_to "注册", new_registration_path(resource_name)%></span>
+    </div>
+
+    <div class="am-u-sm-10 login-am-center">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "am-form"}) do |f| %>
+
+        <fieldset>
+          <div class="error"><%= notice %></div>
+          <div class="alert"><%= alert %></div>
+
+          <div class="am-form-group">
+            <%= f.text_field :login_name, autofocus: true, id: "doc-ipt-email-1", placeholder: "输入电子邮件" %>
+          </div>
+          <div class="am-form-group mt3">
+            <%= f.password_field :password, id:"doc-ipt-pwd-1", placeholder: "输入密码"  %>
+          </div>
+          <div class="am-form-group mt3">
+            <%= f.check_box :remember_me %>
+            <span class="rember_me">记住我？</span>
+          </div>
+          <p>
+            <button type="submit" class="am-btn am-btn-default">登录</button>
+          </p>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>

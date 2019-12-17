@@ -1,0 +1,54 @@
+<div class="tpl-block">
+
+  <!-- 操作列表，如：新增（new） -->
+  <div class="am-g">
+    <div class="am-u-sm-12 am-u-md-6">
+      <div class="am-btn-toolbar">
+        <div class="am-btn-group am-btn-group-xs">
+          <%= link_to "添加菜单", new_background_menu_path(back: request.fullpath), class: "am-btn am-btn-default am-btn-success"%>
+        </div>
+      </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-3">
+      <div class="am-form-group"></div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-3"></div>
+  </div>
+  <!-- 操作列表，如：新增（new）END -->
+
+  <!-- Table -->
+  <div class="am-g">
+    <div class="am-u-sm-12">
+      <table class="am-table am-table-striped am-table-hover table-main" id="list">
+        <thead>
+          <tr>
+            <td>序号</td>
+
+            <!-- 表头 -->
+            <td class="table-title">菜单名</td>
+            <td class="table-title">URL</td>
+            <td class="table-title">是否可用</td>
+            <!-- 表头 END -->
+
+            <td>操作</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @menus.each_with_index do |menu, index|%>
+            <tr>
+              <td><%= show_index(index)%></td>
+              <td><%= link_to_blank menu.name, menu.url %></td>
+              <td><%= link_to_blank menu.url, menu.url%></td>
+              <td><%= t menu.usable%></td>
+              <td>
+                <%= link_to "编辑", edit_background_menu_path(menu, back: request.fullpath), class: "am-btn am-btn-default am-btn-xs am-text-secondary"%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Table end -->
+  <%= paginate @menus%>
+</div>

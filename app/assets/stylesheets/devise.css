@@ -1,0 +1,9 @@
+form .rember_me {
+  color: #fff;
+  font-size: 14px;
+}
+
+form .error,.alert{
+  color:red;
+  margin-bottom: 10px;
+}

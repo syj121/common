@@ -1,0 +1,24 @@
+<%= simple_form_for [:background, @menu] , html: {class: 'valid_engine am-form am-form-horizontal', remote: true} do |f| %>
+  <div class="am-form-group">
+    <label for="menu-name" class="am-u-sm-3 am-form-label">菜单名 / Name</label>
+    <div class="am-u-sm-9">
+      <%= f.text_field :name, class: "validate[required]"%>
+    </div>
+  </div>
+
+  <div class="am-form-group">
+    <label for="menu-email" class="am-u-sm-3 am-form-label">菜单地址 / Url</label>
+    <div class="am-u-sm-9">
+      <%= f.text_field :url, class: "validate[required]"%>
+    </div>
+  </div>
+
+  <div class="am-form-group">
+    <label for="menu-email" class="am-u-sm-3 am-form-label">上级菜单 / Parent</label>
+    <div class="am-u-sm-9">
+      <%= f.select :parent_id, Menu.where.not(id: @menu.id).pluck(:name, :id), class: "validate[required]"%>
+    </div>
+  </div>
+
+  <%= render "/shared/button_form", f: f%>
+<% end %>

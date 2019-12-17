@@ -1,0 +1,5 @@
+<% if @menu.new_record? %>
+  layer_tip("新增菜单失败", "失败原因如下：<%= @menu.errors.messages%>");
+<% else %>
+  layer_tip("新增菜单成功", "菜单【<%= @menu.name %>】已生成");
+<% end %>

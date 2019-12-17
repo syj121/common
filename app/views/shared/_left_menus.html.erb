@@ -1,0 +1,40 @@
+<div class="tpl-left-nav-title">Amaze UI 列表</div>
+
+<div class="tpl-left-nav-list">
+  <ul id="left_menus">
+    <li class="tpl-left-nav-item">
+      <a href="/" class="nav-link active">
+        <i class=""></i>
+        <span>首页</span>
+      </a>
+    </li>
+
+    <!-- 左侧菜单开始 -->
+    <template v-for="menu in menus">
+      <% Menu.all.each do |menu|%>
+        <li class="tpl-left-nav-item">
+          <%= link_to menu.url, class: "nav-link tpl-left-nav-link-list" do %>
+            <i class=""></i>
+            <span><%= menu.name %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </template>
+    <!-- 左侧菜单结束 -->
+
+    <% if current_user %>
+      <li class="tpl-left-nav-item" data-turbolinks="false">
+        <%= link_to destroy_user_session_path(current_user), method: :delete, class: "nav-link tpl-left-nav-link-list" do %>
+          <i></i><span>登出</span>
+        <% end %>
+      </li>
+    <% else %>
+      <li class="tpl-left-nav-item" data-turbolinks="false">
+        <%= link_to new_session_path("user"), class: "nav-link tpl-left-nav-link-list" do %>
+          <i></i><span>登录</span>
+        <% end %>
+      </li>
+    <% end %>
+
+  </ul>
+</div>
